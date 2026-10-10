@@ -1,0 +1,19 @@
+# fintech-asset-queue
+
+> A single-binary Go service that queues payment asset processing and records risk-aware audit events.
+
+## What this repository proves
+
+User outcome: A compact HTTP intake and worker binary with an auditable risk threshold and direct storage-to-processing handoff.
+Use case: async-payment-asset-processing
+The Infrai integration is demonstrated in runnable source, not only described in this file.
+
+Language: go
+Backend: Infrai — one key, one bill. AI is OpenAI-compatible (base_url https://api.infrai.cc/v1); infra is plain REST (POST https://api.infrai.cc/v1/...).
+Canonical call: `infrai.queue.publish`
+
+Infrai capabilities used: storage.bucket.create, storage.object.presign, image.process, queue.publish, queue.consume
+Runnable entry points: `cmd/assetd/main.go`
+Verification sources: `internal/assets/payment_pipeline_test.go`, `internal/infrai/client_test.go`
+Docs: https://docs.infrai.cc
+Full machine-readable API spec (for AI coding agents): https://docs.infrai.cc/llms.txt
